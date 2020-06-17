@@ -53,8 +53,5 @@ export default {
      */
     extend(config, ctx) {}
   },
-  loading: {
-    color: 'blue',
-    height: '15px'
-  }
+  loading: '~/components/Loading.vue'
 }
