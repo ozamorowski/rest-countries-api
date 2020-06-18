@@ -1,21 +1,38 @@
 <template>
-  <div class="container">
-    <form class="uk-search uk-search-large">
-      <span uk-search-icon></span>
-      <input
-        class="uk-search-input"
-        type="search"
-        v-model="search"
-        placeholder="Search..."
-      />
-    </form>
-    <ul>
-      <li v-for="{ alpha3Code, name } of filteredCountries" :key="alpha3Code">
-        <nuxt-link :to="{ name: 'country-code', params: { code: alpha3Code } }">
-          {{ name }}
-        </nuxt-link>
-      </li>
-    </ul>
+  <div>
+    <input
+      class="search"
+      type="search"
+      v-model="search"
+      placeholder="Search for country..."
+    />
+    <div class="grid">
+      <router-link
+        v-for="{
+          alpha3Code,
+          name,
+          flag,
+          population,
+          region,
+          capital
+        } of filteredCountries"
+        :key="alpha3Code"
+        tag="div"
+        :to="{ name: 'country-code', params: { code: alpha3Code } }"
+      >
+        <div class="uk-card uk-card-small uk-card-hover">
+          <div class="uk-card-media-top">
+            <img :data-src="flag" uk-img alt="" height="179" />
+          </div>
+          <div class="uk-card-body">
+            <h3>{{ name }}</h3>
+            <p><b>Population:</b> {{ population }}</p>
+            <p><b>Region:</b> {{ region }}</p>
+            <p><b>Capital:</b> {{ capital }}</p>
+          </div>
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -44,3 +61,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px 6%;
+}
+</style>
