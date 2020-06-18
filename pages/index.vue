@@ -17,11 +17,9 @@
         tag="div"
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
       >
-        <div class="uk-card uk-card-small uk-card-hover">
-          <div class="uk-card-media-top">
-            <img :data-src="flag" uk-img alt="" height="179" />
-          </div>
-          <div class="uk-card-body">
+        <div class="card">
+          <img :data-src="flag" uk-img alt="" height="179" />
+          <div class="card-body">
             <h3>{{ name }}</h3>
             <p><b>Population:</b> {{ population }}</p>
             <p><b>Region:</b> {{ region }}</p>
@@ -61,5 +59,18 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 40px 6%;
+}
+
+.card {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+  }
+
+  .card-body {
+    padding: 20px;
+  }
 }
 </style>
