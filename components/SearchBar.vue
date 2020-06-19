@@ -48,29 +48,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 $width: 500px;
+
 form {
   width: $width;
-}
-
-.search {
-  max-width: 100%;
-  width: 100%;
-  height: 60px;
-  border: 0 none;
-  border-radius: 6px;
-  padding: 10px 30px;
-  background: #fff;
-  transition: 0.2s ease-in-out;
-  transition-property: color, background-color, border;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  color: #666;
-  font-size: 1em;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 .results {
@@ -90,14 +72,6 @@ form {
     &:hover {
       background: #e3e3e3;
     }
-  }
-}
-
-@supports (-webkit-appearance: none) or (-moz-appearance: none) {
-  input[type='checkbox'],
-  input[type='radio'] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
   }
 }
 </style>
