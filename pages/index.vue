@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SearchBar from '@/components/SearchBar'
 
 export default {
@@ -43,7 +42,7 @@ export default {
   mounted() {
     this.$nextTick(async () => {
       this.$nuxt.$loading.start()
-      const res = await axios.get('https://restcountries.eu/rest/v2/all')
+      const res = await this.$axios.get('/all')
       this.countries = res.data
       this.$nuxt.$loading.finish()
     })

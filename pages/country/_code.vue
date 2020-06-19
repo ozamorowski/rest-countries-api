@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data: () => ({
     country: Object,
@@ -52,9 +50,7 @@ export default {
     this.$nextTick(async () => {
       this.$nuxt.$loading.true
 
-      const res = await axios.get(
-        'https://restcountries.eu/rest/v2/alpha/' + this.$route.params.code
-      )
+      const res = await this.$axios.get('/alpha/' + this.$route.params.code)
       this.country = res.data
 
       this.country.borders.forEach(async code => {
@@ -65,10 +61,8 @@ export default {
     })
   },
   methods: {
-    getBorderName: async code => {
-      const { data } = await axios.get(
-        `https://restcountries.eu/rest/v2/alpha/${code}?fields=name`
-      )
+    async getBorderName(code) {
+      const { data } = await this.$axios.get(`/alpha/${code}?fields=name`)
       return { name: data.name, code }
     }
   }
