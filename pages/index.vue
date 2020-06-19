@@ -1,11 +1,8 @@
 <template>
   <div>
-    <input
-      class="search"
-      type="search"
-      v-model="search"
-      placeholder="Search for country..."
-    />
+    <div class="top-bar">
+      <SearchBar :countries="countries" />
+    </div>
     <div class="grid">
       <router-link
         v-for="{
@@ -15,7 +12,7 @@
           population,
           region,
           capital
-        } of filteredCountries"
+        } of countries"
         :key="alpha3Code"
         tag="div"
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
@@ -38,11 +35,12 @@
 
 <script>
 import axios from 'axios'
+import SearchBar from '@/components/SearchBar'
 
 export default {
+  components: { SearchBar },
   data: () => ({
-    countries: [],
-    search: ''
+    countries: []
   }),
   mounted() {
     this.$nextTick(async () => {
@@ -51,18 +49,14 @@ export default {
       this.countries = res.data
       this.$nuxt.$loading.finish()
     })
-  },
-  computed: {
-    filteredCountries() {
-      return this.countries.filter(country =>
-        country.name.toLowerCase().includes(this.search.toLowerCase())
-      )
-    }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.top-bar {
+  padding: 50px 0 70px;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
