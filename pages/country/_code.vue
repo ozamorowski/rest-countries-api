@@ -17,17 +17,17 @@
     </p>
     <p>
       Currencies:
-      <span v-for="curr in country.currencies" :key="curr.code">
-        {{ curr.name }}
+      <span v-for="{ code, name } in country.currencies" :key="code">
+        {{ name }}
       </span>
     </p>
     <p>
       Languages:
-      <span v-for="lang in country.languages" :key="lang.name">
-        {{ lang.name }} ({{ lang.nativeName }})
+      <span v-for="{ name, nativeName } in country.languages" :key="name">
+        {{ name }} ({{ nativeName }})
       </span>
     </p>
-    <div>
+    <div v-if="borders.length">
       <p>Border countries:</p>
       <ul>
         <li v-for="{ code, name } of borders" :key="code">
@@ -41,30 +41,33 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data: () => ({
     country: Object,
     borders: []
   }),
-  mounted() {
-    this.$nextTick(async () => {
-      this.$nuxt.$loading.true
+  async mounted() {
+    const code = this.$route.params.code
 
-      const res = await this.$axios.get('/alpha/' + this.$route.params.code)
-      this.country = res.data
+    this.country = this.countries.length
+      ? this.countries.find(c => c.alpha3Code === code)
+      : await this.$axios.$get('/alpha/' + code)
 
-      this.country.borders.forEach(async code => {
-        this.borders.push(await this.getBorderName(code))
-      })
-
-      this.$nuxt.$loading.false
+    this.country.borders.forEach(async code => {
+      this.borders.push(await this.getBorderName(code))
     })
   },
   methods: {
     async getBorderName(code) {
-      const { data } = await this.$axios.get(`/alpha/${code}?fields=name`)
-      return { name: data.name, code }
+      const { name } = this.countries.length
+        ? this.countries.find(country => country.alpha3Code === code)
+        : await this.$axios.$get(`/alpha/${code}?fields=name`)
+
+      return { name, code }
     }
-  }
+  },
+  computed: mapState(['countries'])
 }
 </script>
