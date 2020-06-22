@@ -2,17 +2,7 @@
   <div>
     <div class="top-bar">
       <SearchBar />
-
-      <form>
-        <select @change="setRegion">
-          <option value="all">Filter by region</option>
-          <option value="africa">Africa</option>
-          <option value="americas">Americas</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
-      </form>
+      <RegionFilter />
     </div>
     <div class="grid">
       <router-link
@@ -38,9 +28,10 @@
 
 <script>
 import SearchBar from '@/components/SearchBar'
+import RegionFilter from '@/components/RegionFilter'
 
 export default {
-  components: { SearchBar },
+  components: { SearchBar, RegionFilter },
   async fetch(data) {
     await data.store.dispatch('getCountries')
   },
