@@ -32,11 +32,10 @@ export default {
   }),
   computed: {
     results() {
-      if (this.search.length < 2) return
-
-      return this.countries.filter(country =>
-        country.name.toLowerCase().includes(this.search.toLowerCase())
-      )
+      if (this.search.length > 2)
+        return this.$store.state.countries.filter(country =>
+          country.name.toLowerCase().includes(this.search.toLowerCase())
+        )
     }
   },
   methods: {

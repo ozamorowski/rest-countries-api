@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="top-bar">
-      <SearchBar :countries="countries" />
+      <SearchBar />
 
       <form>
-        <select v-model="region">
+        <select @change="setRegion">
           <option value="all">Filter by region</option>
           <option value="africa">Africa</option>
           <option value="americas">Americas</option>
@@ -16,14 +16,8 @@
     </div>
     <div class="grid">
       <router-link
-        v-for="{
-          alpha3Code,
-          name,
-          flag,
-          population,
-          region,
-          capital
-        } of countriesByRegion"
+        v-for="{ alpha3Code, name, flag, population, region, capital } of $store
+          .getters.getByRegion"
         :key="alpha3Code"
         tag="div"
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
@@ -47,25 +41,12 @@ import SearchBar from '@/components/SearchBar'
 
 export default {
   components: { SearchBar },
-  data: () => ({
-    countries: [],
-    region: 'all'
-  }),
-  mounted() {
-    this.$nextTick(async () => {
-      this.$nuxt.$loading.start()
-      const res = await this.$axios.get('/all')
-      this.countries = res.data
-      this.$nuxt.$loading.finish()
-    })
+  async fetch(data) {
+    await data.store.dispatch('getCountries')
   },
-  computed: {
-    countriesByRegion() {
-      if ((this.region === 'all') | !this.region) return this.countries
-
-      return this.countries.filter(
-        country => country.region.toLowerCase() === this.region
-      )
+  methods: {
+    setRegion(event) {
+      this.$store.commit('setRegion', event.target.value)
     }
   }
 }
