@@ -17,7 +17,7 @@
 export default {
   data: () => ({
     options: [
-      { name: 'Filter by region', value: 'all' },
+      { name: 'Filter by region', value: '' },
       { name: 'Africa', value: 'africa' },
       { name: 'Americas', value: 'americas' },
       { name: 'Asia', value: 'asia' },

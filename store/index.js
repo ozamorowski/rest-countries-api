@@ -1,6 +1,6 @@
 export const state = () => ({
   countries: [],
-  region: 'all'
+  region: ''
 })
 
 export const mutations = {
@@ -21,7 +21,7 @@ export const actions = {
 
 export const getters = {
   getByRegion({ region, countries }) {
-    return region === 'all'
+    return !region
       ? countries
       : countries.filter(country => country.region.toLowerCase() === region)
   }
