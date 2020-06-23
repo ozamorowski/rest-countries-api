@@ -22,7 +22,7 @@
           <img :data-src="flag" uk-img alt="" height="179" />
           <div class="card-body">
             <h3>{{ name }}</h3>
-            <p><b>Population:</b> {{ population }}</p>
+            <p><b>Population:</b> {{ formatPopulation(population) }}</p>
             <p><b>Region:</b> {{ region }}</p>
             <p><b>Capital:</b> {{ capital }}</p>
           </div>
@@ -46,6 +46,9 @@ export default {
   methods: {
     setRegion(event) {
       this.$store.commit('setRegion', event.target.value)
+    },
+    formatPopulation(number) {
+      return new Intl.NumberFormat().format(number)
     }
   },
   computed: mapGetters(['getByRegion'])

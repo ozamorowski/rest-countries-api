@@ -5,7 +5,7 @@
     <img :src="country.flag" alt="" />
     <h1>{{ country.name }}</h1>
     <p>Native name: {{ country.nativeName }}</p>
-    <p>Population: {{ country.population }}</p>
+    <p>Population: {{ formatPopulation(country.population) }}</p>
     <p>Region: {{ country.region }}</p>
     <p>Sub Region: {{ country.subregion }}</p>
     <p>Capital: {{ country.capital }}</p>
@@ -66,6 +66,9 @@ export default {
         : await this.$axios.$get(`/alpha/${code}?fields=name`)
 
       return { name, code }
+    },
+    formatPopulation(number) {
+      return new Intl.NumberFormat().format(number)
     }
   },
   computed: mapState(['countries'])
