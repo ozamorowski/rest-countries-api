@@ -6,8 +6,14 @@
     </div>
     <div class="grid">
       <router-link
-        v-for="{ alpha3Code, name, flag, population, region, capital } of $store
-          .getters.getByRegion"
+        v-for="{
+          alpha3Code,
+          name,
+          flag,
+          population,
+          region,
+          capital
+        } of getByRegion"
         :key="alpha3Code"
         tag="div"
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
@@ -27,6 +33,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import SearchBar from '@/components/SearchBar'
 import RegionFilter from '@/components/RegionFilter'
 
@@ -39,7 +47,8 @@ export default {
     setRegion(event) {
       this.$store.commit('setRegion', event.target.value)
     }
-  }
+  },
+  computed: mapGetters(['getByRegion'])
 }
 </script>
 
