@@ -1,41 +1,55 @@
 <template>
-  <div>
-    <button @click="$router.go(-1)">Back</button>
-    <br />
-    <img :src="country.flag" alt="" />
-    <h1>{{ country.name }}</h1>
-    <p>Native name: {{ country.nativeName }}</p>
-    <p>Population: {{ formatPopulation(country.population) }}</p>
-    <p>Region: {{ country.region }}</p>
-    <p>Sub Region: {{ country.subregion }}</p>
-    <p>Capital: {{ country.capital }}</p>
-    <p>
-      Top Level Domain:
-      <span v-for="domain in country.topLevelDomain" :key="domain">
-        {{ domain }}
-      </span>
-    </p>
-    <p>
-      Currencies:
-      <span v-for="{ code, name } in country.currencies" :key="code">
-        {{ name }}
-      </span>
-    </p>
-    <p>
-      Languages:
-      <span v-for="{ name, nativeName } in country.languages" :key="name">
-        {{ name }} ({{ nativeName }})
-      </span>
-    </p>
-    <div v-if="borders.length">
-      <p>Border countries:</p>
-      <ul>
-        <li v-for="{ code, name } of borders" :key="code">
-          <nuxt-link :to="{ name: 'country-code', params: { code: code } }">
+  <div class="content">
+    <button class="back" @click="$router.push('/')">
+      <span uk-icon="icon: arrow-left"></span> Back
+    </button>
+    <div class="flex">
+      <div class="flag">
+        <img :src="country.flag" alt="" />
+      </div>
+      <div class="info">
+        <div class="name">
+          <h1>{{ country.name }}</h1>
+        </div>
+        <div class="details">
+          <p><b>Native name:</b> {{ country.nativeName }}</p>
+          <p><b>Population:</b> {{ formatPopulation(country.population) }}</p>
+          <p><b>Region:</b> {{ country.region }}</p>
+          <p><b>Sub Region:</b> {{ country.subregion }}</p>
+          <p><b>Capital:</b> {{ country.capital }}</p>
+
+          <p>
+            <b>Top Level Domain:</b>
+            <span v-for="domain in country.topLevelDomain" :key="domain">
+              {{ domain }}
+            </span>
+          </p>
+          <p>
+            <b>Currencies:</b>
+            <span v-for="{ code, name } in country.currencies" :key="code">
+              {{ name }}
+            </span>
+          </p>
+          <p>
+            <b>Languages:</b>
+            <span v-for="{ name, nativeName } in country.languages" :key="name">
+              {{ name }} ({{ nativeName }})
+            </span>
+          </p>
+        </div>
+        <div class="borders" v-if="borders.length">
+          <b>Border countries:</b><br /><br />
+
+          <nuxt-link
+            v-for="{ code, name } of borders"
+            :key="code"
+            :to="{ name: 'country-code', params: { code: code } }"
+            tag="button"
+          >
             {{ name }}
           </nuxt-link>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -74,3 +88,45 @@ export default {
   computed: mapState(['countries'])
 }
 </script>
+
+<style lang="scss">
+.back {
+  margin: 40px 0;
+  padding-left: 10px;
+}
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+
+  > * {
+    flex: 1 1 40rem;
+  }
+}
+
+.flag {
+  img {
+    padding-right: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.info {
+  padding-left: 40px;
+}
+
+button {
+  color: #666;
+  cursor: pointer;
+  padding: 0 15px;
+  line-height: 28px;
+  font-size: 0.875rem;
+  background-color: transparent;
+  border: 1px solid #e5e5e5;
+  margin: 5px;
+
+  &:hover {
+    border-color: #b2b2b2;
+  }
+}
+</style>
