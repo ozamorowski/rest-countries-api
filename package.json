@@ -13,7 +13,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "uikit": "^3.5.4"
+    "uikit": "^3.5.4",
+    "vue-lazyload": "^1.3.3"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.10.0",

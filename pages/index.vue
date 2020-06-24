@@ -19,7 +19,7 @@
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
       >
         <div class="card">
-          <img :data-src="flag" uk-img height="179" />
+          <img v-lazy="flag" height="179" />
           <div class="card-body">
             <h3>{{ name }}</h3>
             <p><b>Population:</b> {{ formatPopulation(population) }}</p>
@@ -102,7 +102,7 @@ select {
   }
 }
 
-img {
+img[lazy='loaded'] {
   animation: fadein 2s;
 }
 
