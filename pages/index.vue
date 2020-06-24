@@ -19,7 +19,7 @@
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
       >
         <div class="card">
-          <img :data-src="flag" uk-img alt="" height="179" />
+          <img :data-src="flag" uk-img height="179" />
           <div class="card-body">
             <h3>{{ name }}</h3>
             <p><b>Population:</b> {{ formatPopulation(population) }}</p>
@@ -99,6 +99,24 @@ select {
 
   .card-body {
     padding: 20px;
+  }
+}
+
+img {
+  animation: fadein 2s;
+}
+
+img:not([src]) {
+  min-width: 1px;
+  visibility: hidden;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

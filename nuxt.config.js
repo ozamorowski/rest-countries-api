@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['uikit/dist/css/uikit.min.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */

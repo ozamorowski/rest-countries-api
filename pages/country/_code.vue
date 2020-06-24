@@ -1,8 +1,6 @@
 <template>
   <div class="content">
-    <button class="back" @click="$router.push('/')">
-      <span uk-icon="icon: arrow-left"></span> Back
-    </button>
+    <button class="back" @click="$router.push('/')"><ArrowBack /> Back</button>
     <div class="flex">
       <div class="flag">
         <img :src="country.flag" alt="" />
@@ -57,7 +55,10 @@
 <script>
 import { mapState } from 'vuex'
 
+import ArrowBack from '@/components/IconArrowBack'
+
 export default {
+  components: { ArrowBack },
   data: () => ({
     country: Object,
     borders: []

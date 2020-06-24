@@ -33,6 +33,7 @@ nav {
     color: black;
     font-size: 1.5em;
     font-weight: bold;
+    text-decoration: none;
 
     &:hover {
       text-decoration: none;
