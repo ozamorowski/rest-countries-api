@@ -1,6 +1,22 @@
 <template lang="html">
   <div class="loading-page" v-if="loading">
-    <div uk-spinner="ratio: 3"></div>
+    <svg
+      class="spinner"
+      width="90"
+      height="90"
+      viewBox="0 0 30 30"
+      xmlns="http://www.w3.org/2000/svg"
+      data-svg="spinner"
+    >
+      <circle
+        fill="none"
+        stroke="#666"
+        cx="15"
+        cy="15"
+        r="14"
+        style="stroke-width: 0.333333px;"
+      ></circle>
+    </svg>
   </div>
 </template>
 
@@ -20,7 +36,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .loading-page {
   position: fixed;
   display: flex;
@@ -30,5 +46,40 @@ export default {
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
   z-index: 999;
+}
+
+.spinner {
+  animation: rotate 1.4s linear infinite;
+
+  circle {
+    stroke-dasharray: 88px;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash 1.4s ease-in-out infinite;
+    stroke-linecap: round;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 88px;
+  }
+  50% {
+    stroke-dashoffset: 22px;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 88px;
+    transform: rotate(450deg);
+  }
 }
 </style>
