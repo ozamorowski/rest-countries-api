@@ -94,6 +94,8 @@ export default {
 .back {
   margin: 40px 0;
   padding-left: 10px;
+  display: flex;
+  align-items: center;
 }
 .flex {
   display: flex;
