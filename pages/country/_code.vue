@@ -3,7 +3,7 @@
     <button class="back" @click="$router.push('/')"><ArrowBack /> Back</button>
     <div class="flex">
       <div class="flag">
-        <img v-lazy="country.flag" alt="" />
+        <img v-lazy="country.flag" :alt="country.name" />
       </div>
       <div class="info">
         <div class="name">

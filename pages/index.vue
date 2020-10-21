@@ -19,7 +19,7 @@
         :to="{ name: 'country-code', params: { code: alpha3Code } }"
       >
         <div class="card">
-          <img v-lazy="flag" height="179" />
+          <img v-lazy="flag" height="179" :alt="name" />
           <div class="card-body">
             <h3>{{ name }}</h3>
             <p><b>Population:</b> {{ formatPopulation(population) }}</p>
