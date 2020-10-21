@@ -71,11 +71,11 @@ select {
   border: 0 none;
   border-radius: 6px;
   padding: 10px 30px;
-  background: #fff;
+  background: var(--color-secondary);
   transition: 0.2s ease-in-out;
   transition-property: color, background-color, border;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  color: #666;
+  color: var(--font-color);
   font-size: 1em;
 
   &:focus {

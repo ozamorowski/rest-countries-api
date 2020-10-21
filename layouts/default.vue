@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$store.state.darkTheme ? 'theme-dark' : 'theme-light'">
     <Header />
 
     <div class="container">
@@ -37,5 +37,23 @@ body {
 img {
   max-width: 100%;
   width: 100%;
+}
+
+.theme-light {
+  --color-primary: #0060df;
+  --color-secondary: #fbfbfe;
+  --color-accent: #fd6f53;
+  --font-color: #000000;
+  background: var(--color-secondary);
+  color: var(--font-color);
+}
+
+.theme-dark {
+  --color-primary: #17ed90;
+  --color-secondary: #243133;
+  --color-accent: #12cdea;
+  --font-color: #ffffff;
+  background: var(--color-secondary);
+  color: var(--font-color);
 }
 </style>

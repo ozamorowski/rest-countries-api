@@ -10,7 +10,6 @@
     >
       <circle
         fill="none"
-        stroke="#666"
         cx="15"
         cy="15"
         r="14"
@@ -44,7 +43,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-secondary);
   z-index: 999;
 }
 
@@ -57,6 +56,7 @@ export default {
     transform-origin: center;
     animation: dash 1.4s ease-in-out infinite;
     stroke-linecap: round;
+    stroke: var(--font-color);
   }
 }
 

@@ -119,7 +119,7 @@ export default {
 }
 
 button {
-  color: #666;
+  color: var(--font-color);
   cursor: pointer;
   padding: 0 15px;
   line-height: 28px;

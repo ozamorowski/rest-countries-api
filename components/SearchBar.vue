@@ -60,16 +60,17 @@ form {
   max-height: 370px;
   overflow: auto;
   z-index: 999;
-  background: white;
+  background: var(--color-secondary);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
   > div {
+    color: var(--font-color);
     cursor: pointer;
     padding: 25px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-secondary);
 
     &:hover {
-      background: #e3e3e3;
+      background: var(--color-primary);
     }
   }
 }

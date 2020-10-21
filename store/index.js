@@ -1,6 +1,7 @@
 export const state = () => ({
   countries: [],
-  region: ''
+  region: '',
+  darkTheme: false
 })
 
 export const mutations = {
@@ -9,6 +10,9 @@ export const mutations = {
   },
   setRegion(state, payload) {
     state.region = payload
+  },
+  setTheme(state, payload) {
+    state.darkTheme = payload
   }
 }
 
