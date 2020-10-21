@@ -15,10 +15,7 @@ export default {
   },
   loading: { color: '#fff' },
   css: ['@/fonts/fonts.css'],
-  plugins: [
-    '@/plugins/lazyload.js',
-    { src: '~/plugins/vuex-persist', ssr: false }
-  ],
+  plugins: ['@/plugins/lazyload.js'],
   modules: ['@nuxtjs/axios'],
   axios: {
     baseURL: 'https://restcountries.eu/rest/v2'
