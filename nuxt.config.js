@@ -1,8 +1,5 @@
 export default {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -16,47 +13,15 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: ['@/fonts/fonts.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [
     '@/plugins/lazyload.js',
     { src: '~/plugins/vuex-persist', ssr: false }
   ],
-  /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: [],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  modules: ['@nuxtjs/axios'],
   axios: {
     baseURL: 'https://restcountries.eu/rest/v2'
-  },
-  /*
-   ** Build configuration
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
   },
   server: {
     host: '0.0.0.0'
