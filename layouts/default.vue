@@ -40,19 +40,17 @@ img {
 }
 
 .theme-light {
-  --color-primary: #0060df;
-  --color-secondary: #fbfbfe;
-  --color-accent: #fd6f53;
-  --font-color: #000000;
+  --color-primary: hsl(0, 0%, 100%);
+  --color-secondary: hsl(0, 0%, 98%);
+  --font-color: hsl(200, 15%, 8%);
   background: var(--color-secondary);
   color: var(--font-color);
 }
 
 .theme-dark {
-  --color-primary: #17ed90;
-  --color-secondary: #243133;
-  --color-accent: #12cdea;
-  --font-color: #ffffff;
+  --color-primary: hsl(209, 23%, 22%);
+  --color-secondary: hsl(207, 26%, 17%);
+  --font-color: hsl(0, 0%, 100%);
   background: var(--color-secondary);
   color: var(--font-color);
 }
