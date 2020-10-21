@@ -1,5 +1,5 @@
 <template>
-  <div :class="$store.state.darkTheme ? 'theme-dark' : 'theme-light'">
+  <div>
     <Header />
 
     <div class="container">
@@ -12,7 +12,14 @@
 import Header from '@/components/Header'
 
 export default {
-  components: { Header }
+  components: { Header },
+  head() {
+    return {
+      bodyAttrs: {
+        class: this.$store.state.darkTheme ? 'theme-dark' : 'theme-light'
+      }
+    }
+  }
 }
 </script>
 
