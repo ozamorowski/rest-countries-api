@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="container">
-      <a href="/">Where in the world?</a>
+      <nuxt-link to="/">Where in the world?</nuxt-link>
       <label id="switch" class="switch">
         <input id="slider" type="checkbox" v-model="darkTheme" />
         <span class="slider round"></span>
