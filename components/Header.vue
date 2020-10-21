@@ -3,11 +3,7 @@
     <div class="container">
       <a href="/">Where in the world?</a>
       <label id="switch" class="switch">
-        <input
-          type="checkbox"
-          @change="$store.commit('setTheme', !$store.state.darkTheme)"
-          id="slider"
-        />
+        <input id="slider" type="checkbox" v-model="darkTheme" />
         <span class="slider round"></span>
       </label>
     </div>
@@ -16,7 +12,17 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    darkTheme: {
+      get() {
+        return this.$store.state.darkTheme
+      },
+      set(value) {
+        this.$store.commit('setTheme', value)
+      }
+    }
+  }
 }
 </script>
 
